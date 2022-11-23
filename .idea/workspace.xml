@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/User.java" afterDir="false" />
+    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Added menu, basic authorization and registration without validating">
+      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/Authorization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/AuthorizationValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/RegistrationValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,19 +35,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/VW/Desktop/3Course/OOP/FirstPractice3Course/gson-2.10.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/VW/Desktop/3Course/OOP/PWork3/PW3",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Console"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.killernr.pharmaceuticalcatalog" />
@@ -96,7 +98,9 @@
       <updated>1669134129794</updated>
       <workItem from="1669134161824" duration="8569000" />
       <workItem from="1669152919374" duration="2035000" />
-      <workItem from="1669172715006" duration="1208000" />
+      <workItem from="1669172715006" duration="3989000" />
+      <workItem from="1669191851870" duration="7221000" />
+      <workItem from="1669228326576" duration="4183000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1669144425229</created>
@@ -105,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669144425229</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Wrote JSON files parsing and writing JSON string to file">
+      <created>1669176481304</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669176481304</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +135,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="Wrote JSON files parsing and writing JSON string to file" />
+    <MESSAGE value="Added menu, basic authorization and registration without validating" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added menu, basic authorization and registration without validating" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
