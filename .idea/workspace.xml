@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Added menu, basic authorization and registration without validating">
-      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Menu.java" afterDir="false" />
+    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Added password hashing, validation (regexp(need to be finished), adding, deleting and updating data">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/bytes_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/060737b7b889b88a0abb79e85c7b441e8e13e27d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/1052b2713c81e88d4af02aa31aacc0d96608b36c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/84773a4f8d0497a6464b794908a12863bd91a670" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c76797ce6069852e735bf75a459f1a7ff26e6e8a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/libraries/bcrypt-0.9.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/libraries/bytes-1.5.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/libraries/gson-2.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/medicine.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/CrudWithJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Medicine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/bcrypt_0_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/bcrypt_0_9_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_10.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PharmaceuticalCatalog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaceuticalCatalog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/Authorization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/AuthorizationValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/RegistrationValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/AuthorizationValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/AuthorizationValidation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,9 +56,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/VW/Desktop/3Course/OOP/PWork3/PW3",
+    "last_opened_file_path": "C:/Users/VW/Desktop/3Course/OOP/FirstPractice3Course/PharmaceuticalCatalog/resources/libraries/gson-2.10.jar",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "Console"
   }
@@ -100,7 +114,11 @@
       <workItem from="1669152919374" duration="2035000" />
       <workItem from="1669172715006" duration="3989000" />
       <workItem from="1669191851870" duration="7221000" />
-      <workItem from="1669228326576" duration="4183000" />
+      <workItem from="1669228326576" duration="8158000" />
+      <workItem from="1669267314911" duration="2337000" />
+      <workItem from="1669354433854" duration="9158000" />
+      <workItem from="1669417432607" duration="6310000" />
+      <workItem from="1669424225166" duration="482000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1669144425229</created>
@@ -116,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669176481304</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added menu, basic authorization and registration without validating">
+      <created>1669232853632</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669232853632</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,14 +162,19 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Wrote JSON files parsing and writing JSON string to file" />
     <MESSAGE value="Added menu, basic authorization and registration without validating" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added menu, basic authorization and registration without validating" />
+    <MESSAGE value="Added password hashing, validation (regexp(need to be finished), adding, deleting and updating data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added password hashing, validation (regexp(need to be finished), adding, deleting and updating data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java</url>
-          <line>28</line>
+          <url>file://$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/CrudWithJson.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../../../Program Files/Java/jdk-18.0.2.1/lib/src.zip!/java.base/java/nio/file/StandardOpenOption.java</url>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

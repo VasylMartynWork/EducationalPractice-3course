@@ -1,5 +1,6 @@
 package com.killernr.pharmaceuticalcatalog.dataaccess;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,25 +26,55 @@ public class JsonAccess {
     }
   }
 
-  public static boolean isExistUser(User user){
-    List<User> userList = jsonToList();
-    for (User userFromList : userList) {
-      if(userFromList.getName().equals(user.getName()) && userFromList.getPassword().equals(user.getPassword())){
-        return true;
-      }
-    }
-    return false;
-  }
-
-  private static List<User> jsonToList(){
-    Path path = Path.of("resources","users.json");
+  public static List<Medicine> medicineListFromJson(){
+    Path pathToMedicineJson = Path.of("resources","medicine.json");
     Gson gson = new Gson();
     String jsonToArray = null;
     try {
-      if(readString(path).length() == 0){
-        writeString(path, adminAccountToJson());
+      if(readString(pathToMedicineJson).length() == 0){
+        writeString(pathToMedicineJson, testMedicineToJson());
       }
-      jsonToArray = readString(path);
+      jsonToArray = readString(pathToMedicineJson);
+    }
+    catch (IOException e){
+      System.out.println("Error is: " + e.getMessage());
+    }
+    Medicine[] medicineArray = gson.fromJson(jsonToArray, Medicine[].class);
+    List<Medicine> medicineList = new ArrayList<>(Arrays.asList(medicineArray));
+    return medicineList;
+  }
+
+  private static String testMedicineToJson(){
+    Medicine medicine = new Medicine("Анальгін",125);
+    Gson gson = new Gson();
+    List<Medicine> medicineList = new ArrayList<>();
+    medicineList.add(medicine);
+    return gson.toJson(medicineList);
+  }
+
+  public static int isExistUser(User user){
+    List<User> userList = jsonToList();
+    for (User userFromList : userList) {
+      if(userFromList.getName().equals(user.getName()) && BCrypt.verifyer().verify(user.getPassword().toCharArray(), userFromList.getPassword()).verified){
+        if(userFromList.getName().equals("Admin")){
+          return 0;
+        }
+        return 1;
+      }
+    }
+    return 2;
+  }
+
+
+  private static List<User> jsonToList(){
+    Path pathToUserJson = Path.of("resources","users.json");
+    Gson gson = new Gson();
+    String jsonToArray = null;
+    try {
+      if(readString(pathToUserJson).length() == 0){
+        writeString(pathToUserJson, adminAccountToJson());
+      }
+      jsonToArray = readString(pathToUserJson);
     }
     catch (IOException e){
       System.out.println("Error is: " + e.getMessage());
@@ -51,10 +82,6 @@ public class JsonAccess {
     User[] userArray = gson.fromJson(jsonToArray, User[].class);
     List<User> userList = new ArrayList<>(Arrays.asList(userArray));
     return userList;
-  }
-
-  public static String readString(Path path) throws IOException {
-    return Files.readString(path);
   }
 
 //  public void access() {
@@ -79,7 +106,11 @@ public class JsonAccess {
     return gson.toJson(users);
   }
 
-  private static void writeString(Path path, String data) throws IOException {
-    Files.writeString(path, data, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
+  public static String readString(Path path) throws IOException {
+    return Files.readString(path);
+  }
+
+  public static void writeString(Path path, String data) throws IOException {
+    Files.writeString(path, data, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
   }
 }
