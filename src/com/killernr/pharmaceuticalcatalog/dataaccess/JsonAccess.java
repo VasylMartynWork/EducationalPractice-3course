@@ -10,9 +10,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A utility class that provides user file handling capabilities
+ * that can read data from a file with data about medicine and translate it into a List.
+ * @author VasylMartynWork
+ */
 public class JsonAccess {
 
-  public static void addUser(User user){
+  /**
+   * Add data about user to JSON.
+   * @param user The object from which the data is taken.
+   * @throws IOException If file don't exist.
+   */
+  public static void addUser(User user) throws IOException{
     Path path = Path.of("resources","users.json");
     Gson gson = new Gson();
     List<User> userList = jsonToList();
@@ -22,10 +32,16 @@ public class JsonAccess {
       writeString(path, usersStr);
     }
     catch (IOException e){
-      System.out.println("Error" + e.getMessage());
+      System.out.println("Error is: " + e.getMessage());
     }
   }
 
+  /**
+   * Returns a list, converts a JSON file into a string,
+   * reads data from this string into an array of objects,
+   * and converts this array into a list.
+   * @return List with objects of Medicine class.
+   */
   public static List<Medicine> medicineListFromJson(){
     Path pathToMedicineJson = Path.of("resources","medicine.json");
     Gson gson = new Gson();
@@ -40,8 +56,7 @@ public class JsonAccess {
       System.out.println("Error is: " + e.getMessage());
     }
     Medicine[] medicineArray = gson.fromJson(jsonToArray, Medicine[].class);
-    List<Medicine> medicineList = new ArrayList<>(Arrays.asList(medicineArray));
-    return medicineList;
+    return new ArrayList<>(Arrays.asList(medicineArray));
   }
 
   private static String testMedicineToJson(){
@@ -52,6 +67,11 @@ public class JsonAccess {
     return gson.toJson(medicineList);
   }
 
+  /**
+   * Returns a number. Checks whether data about a specific user exists in the users file.
+   * @param user User which data is checked.
+   * @return Number, if user is admin, return 0, if registered user return 1, if not exists in file, return 2.
+   */
   public static int isExistUser(User user){
     List<User> userList = jsonToList();
     for (User userFromList : userList) {
@@ -64,7 +84,6 @@ public class JsonAccess {
     }
     return 2;
   }
-
 
   private static List<User> jsonToList(){
     Path pathToUserJson = Path.of("resources","users.json");
@@ -80,23 +99,8 @@ public class JsonAccess {
       System.out.println("Error is: " + e.getMessage());
     }
     User[] userArray = gson.fromJson(jsonToArray, User[].class);
-    List<User> userList = new ArrayList<>(Arrays.asList(userArray));
-    return userList;
+    return new ArrayList<>(Arrays.asList(userArray));
   }
-
-//  public void access() {
-//    User user = new User("KillerNR", "1234");
-//    User user2 = new User("Boyoh", "4322");
-//    List<User> users = new ArrayList<>();
-//    users.add(user);
-//    users.add(user2);
-//    Gson gson = new Gson();
-//    var a = gson.toJson(users);
-//    List<User> users2 = new ArrayList<>();
-//    User[] users3 = gson.fromJson(a,User[].class);
-//    users2  = Arrays.asList(users3);
-//    System.out.println(a);
-//  }
 
   private static String adminAccountToJson(){
     User admin = new User("Admin","1234321");
@@ -106,10 +110,22 @@ public class JsonAccess {
     return gson.toJson(users);
   }
 
+  /**
+   * Read string from file.
+   * @param path Path to file which from string is red.
+   * @return String with data from file.
+   * @throws IOException If file don't exist.
+   */
   public static String readString(Path path) throws IOException {
     return Files.readString(path);
   }
 
+  /**
+   * Write new data to file.
+   * @param path Path to file in which we write data.
+   * @param data Data that is written to a file.
+   * @throws IOException If file don't exist.
+   */
   public static void writeString(Path path, String data) throws IOException {
     Files.writeString(path, data, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
   }
