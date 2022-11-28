@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Added updating data, throws of IOException, DAO implementation of CRUD and comments to code">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Added search, filter, possibility to exit, checking for user existing at registration">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/medicine.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/medicine.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/CrudWithJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/CrudWithJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Dao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/ui/Menu.java" afterDir="false" />
     </list>
@@ -50,7 +48,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Console"
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -113,7 +111,8 @@
       <workItem from="1669458674522" duration="1653000" />
       <workItem from="1669518190520" duration="15294000" />
       <workItem from="1669583387681" duration="87000" />
-      <workItem from="1669584200653" duration="3138000" />
+      <workItem from="1669584200653" duration="3842000" />
+      <workItem from="1669662285643" duration="6926000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1669144425229</created>
@@ -150,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669533698073</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix registration bug, multiply registering with same login">
+      <created>1669594082048</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669594082048</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +179,9 @@
     <MESSAGE value="Added menu, basic authorization and registration without validating" />
     <MESSAGE value="Added password hashing, validation (regexp(need to be finished), adding, deleting and updating data" />
     <MESSAGE value="Added updating data, throws of IOException, DAO implementation of CRUD and comments to code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added updating data, throws of IOException, DAO implementation of CRUD and comments to code" />
+    <MESSAGE value="Fix registration bug, multiply registering with same login" />
+    <MESSAGE value="Added search, filter, possibility to exit, checking for user existing at registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added search, filter, possibility to exit, checking for user existing at registration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,6 +9,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A utility class that provides user file handling capabilities that can read data from a file with
@@ -34,6 +35,32 @@ public class JsonAccess {
       writeString(path, usersStr);
     } catch (IOException e) {
       System.out.println("Error is: " + e.getMessage());
+    }
+  }
+
+  /**
+   * Perform a searching needed medicine.
+   * @param medicineName Name of medicine that needed.
+   */
+  public static void searchMedicine(String medicineName){
+    List<Medicine> medicineList = medicineListFromJson();
+    for (Medicine medicine : medicineList) {
+      if(medicine.getName().equals(medicineName)){
+        System.out.println("Назва: " + medicine.getName() + " Ціна: " + medicine.getCost());
+        break;
+      }
+    }
+  }
+
+  /**
+   * Perform a filtering medicine catalog and searching a medicine which cost is lower than specified by the user.
+   * @param medicineCost Medicine cost that is maximum cost for filtering.
+   */
+  public static void filterMedicine(int medicineCost){
+    List<Medicine> medicineList = medicineListFromJson();
+    medicineList = medicineList.stream().filter(x -> x.getCost() <= medicineCost).toList();
+    for (Medicine medicine : medicineList) {
+      System.out.println("Назва: " + medicine.getName() + " Ціна: " + medicine.getCost());
     }
   }
 
@@ -74,7 +101,7 @@ public class JsonAccess {
    * @return Number, if user is admin, return 0, if registered user return 1, if not exists in file,
    * return 2.
    */
-  public static int isExistUser(User user) {
+  public static int existingUserCheck(User user) {
     List<User> userList = jsonToList();
     for (User userFromList : userList) {
       if (userFromList.getName().equals(user.getName()) && BCrypt.verifyer()
@@ -88,6 +115,11 @@ public class JsonAccess {
     return 2;
   }
 
+  /**
+   * Return true if user exists in file with users and false, if he doesn't exist.
+   * @param userName Name of the user that need to be checked.
+   * @return True or false
+   */
   public static boolean isExistUserRegistration(String userName) {
     List<User> userList = jsonToList();
     for (User user : userList) {

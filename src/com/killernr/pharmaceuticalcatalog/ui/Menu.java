@@ -30,9 +30,9 @@ public class Menu {
         Scanner userPasswordInput = new Scanner(System.in);
         String userPassword = userPasswordInput.nextLine();
         User user = new User(userLogin, userPassword);
-        if (JsonAccess.isExistUser(user) == 0) {
+        if (JsonAccess.existingUserCheck(user) == 0) {
           adminMenu();
-        } else if (JsonAccess.isExistUser(user) == 1) {
+        } else if (JsonAccess.existingUserCheck(user) == 1) {
           registeredUserMenu(user.getName());
         }
         break;
@@ -93,12 +93,48 @@ public class Menu {
   }
 
   /**
+   * Displays searching menu.
+   */
+  public static void searchMenu(){
+    while (true) {
+      System.out.println("Введіть назву: ");
+      Scanner medicineNameInput = new Scanner(System.in);
+      try {
+        String medicineName = medicineNameInput.nextLine();
+        JsonAccess.searchMedicine(medicineName);
+        break;
+      }
+      catch (Exception e){
+        System.out.println("Помилка, спробуйте ще раз");
+      }
+    }
+  }
+
+  /**
+   * Displays filtering menu.
+   */
+  public static void filterMenu(){
+    while (true) {
+      System.out.println("Введіть максимальну ціну: ");
+      Scanner medicineCostInput = new Scanner(System.in);
+      try {
+        int medicineCost = medicineCostInput.nextInt();
+        JsonAccess.filterMedicine(medicineCost);
+        break;
+      }
+      catch (Exception e){
+        System.out.println("Помилка, спробуйте ще раз");
+      }
+    }
+  }
+
+  /**
    * Displays base menu.
    */
   public static void baseMenu() {
     System.out.println("Ласкаво просимо до фармацевтичного каталогу!");
     while (true) {
-      System.out.println("1. Авторизація \n2. Реєстрація \n3. Вивід каталогу");
+      System.out.println("1. Авторизація \n2. Реєстрація \n3. Вивід каталогу \n4. Пошук в каталозі \n5. Фільтрувати \n6. Вихід");
       System.out.println("Оберіть потрібний пункт меню: ");
       Scanner userInput = new Scanner(System.in);
       try {
@@ -119,7 +155,17 @@ public class Menu {
               System.out.println("Помилка, файл пустий");
             }
             break;
+          case 4:
+            searchMenu();
+            break;
+          case 5:
+            filterMenu();
+            break;
+          case 6:
+            System.exit(0);
+            break;
           default:
+            System.out.println("Помилка, введіть число від 1 до 6");
             break;
         }
         System.out.println("Бажаєте продовжити?");
@@ -143,13 +189,27 @@ public class Menu {
   private static void registeredUserMenu(String userName) {
     System.out.println("Ласкаво просимо до фармацевтичного каталогу, " + userName);
     while (true) {
-      System.out.println("1. Вивід каталогу");
+      System.out.println("1. Вивід каталогу \n2. Пошук в каталозі \n3. Фільтрувати \n4. Вихід");
       System.out.println("Оберіть потрібний пункт меню: ");
       Scanner userInput = new Scanner(System.in);
       try {
         int userChoice = userInput.nextInt();
-        if(userChoice == 1){
-          viewCatalog();
+        switch (userChoice){
+          case 1:
+            viewCatalog();
+            break;
+          case 2:
+            searchMenu();
+            break;
+          case 3:
+            filterMenu();
+            break;
+          case 4:
+            System.exit(0);
+            break;
+          default:
+            System.out.println("Помилка, введіть числа 1 або 4");
+            break;
         }
         System.out.println("Бажаєте продовжити?");
         System.out.println("1. Так");
@@ -172,7 +232,7 @@ public class Menu {
     while (true) {
       System.out.println("Оберіть потрібний пункт меню: ");
       System.out.println(
-          "1. Додати нові дані \n2. Змінити дані \n3. Видалити дані \n4. Вивід каталогу");
+          "1. Додати нові дані \n2. Змінити дані \n3. Видалити дані \n4. Вивід каталогу \n5. Пошук в каталозі \n6. Фільтрувати \n7. Вихід");
       try {
         Scanner userInput = new Scanner(System.in);
         int userChoice = userInput.nextInt();
@@ -194,7 +254,17 @@ public class Menu {
               System.out.println("Помилка, файл пустий");
             }
             break;
+          case 5:
+            searchMenu();
+            break;
+          case 6:
+            filterMenu();
+            break;
+          case 7:
+            System.exit(0);
+            break;
           default:
+            System.out.println("Помилка, введіть число від 1 до 7");
             break;
         }
         System.out.println("Бажаєте продовжити?");
