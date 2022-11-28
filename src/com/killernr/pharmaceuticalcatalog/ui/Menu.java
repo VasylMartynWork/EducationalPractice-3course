@@ -55,15 +55,21 @@ public class Menu {
         System.out.println("Введіть пароль: ");
         Scanner userPasswordInput = new Scanner(System.in);
         String userPassword = userPasswordInput.next();
-        if (Validation.validate(userLogin, userPassword)) {
-          String hashedUserPassword = BCrypt.withDefaults().hashToString(12, userPassword.toCharArray());
-          User newUser = new User(userLogin, hashedUserPassword);
-          JsonAccess.addUser(newUser);
-          registeredUserMenu(newUser.getName());
-          System.exit(0);
+        if(!JsonAccess.isExistUserRegistration(userLogin)) {
+          if (Validation.validate(userLogin, userPassword)) {
+            String hashedUserPassword = BCrypt.withDefaults()
+                .hashToString(12, userPassword.toCharArray());
+            User newUser = new User(userLogin, hashedUserPassword);
+            JsonAccess.addUser(newUser);
+            registeredUserMenu(newUser.getName());
+            System.exit(0);
+          } else {
+            System.out.println(
+                "Помилка, логін та пароль повинні бути не менше 5 символів, \nта складатись тільки з великих та маленьких латинських літер та цифр");
+          }
         }
-        else{
-          System.out.println("Помилка, логін та пароль повинні бути не менше 5 символів, \nта складатись тільки з великих та маленьких латинських літер та цифр");
+        else {
+          System.out.println("Помилка, такий користувач вже існує");
         }
       }
       catch (Exception e){

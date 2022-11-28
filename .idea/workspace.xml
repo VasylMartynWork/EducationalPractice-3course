@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Added password hashing, validation (regexp(need to be finished), adding, deleting and updating data">
-      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/Validation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Dao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/MedicineDao.java" afterDir="false" />
+    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Added updating data, throws of IOException, DAO implementation of CRUD and comments to code">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/medicine.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/medicine.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/ui/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/AuthorizationValidation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/businesslogic/RegistrationValidation.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/CrudWithJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/CrudWithJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Dao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/JsonAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Medicine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/Medicine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/dataaccess/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killernr/pharmaceuticalcatalog/ui/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,20 +39,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/VW/Desktop/EducationalPractice&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Console&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/VW/Desktop/EducationalPractice",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Console"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.killernr.pharmaceuticalcatalog" />
@@ -119,7 +111,9 @@
       <workItem from="1669424225166" duration="599000" />
       <workItem from="1669424861749" duration="315000" />
       <workItem from="1669458674522" duration="1653000" />
-      <workItem from="1669518190520" duration="14684000" />
+      <workItem from="1669518190520" duration="15294000" />
+      <workItem from="1669583387681" duration="87000" />
+      <workItem from="1669584200653" duration="3138000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1669144425229</created>
@@ -149,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669424821185</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added updating data, throws of IOException, DAO implementation of CRUD and comments to code">
+      <created>1669533698073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669533698073</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +172,8 @@
     <MESSAGE value="Wrote JSON files parsing and writing JSON string to file" />
     <MESSAGE value="Added menu, basic authorization and registration without validating" />
     <MESSAGE value="Added password hashing, validation (regexp(need to be finished), adding, deleting and updating data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added password hashing, validation (regexp(need to be finished), adding, deleting and updating data" />
+    <MESSAGE value="Added updating data, throws of IOException, DAO implementation of CRUD and comments to code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added updating data, throws of IOException, DAO implementation of CRUD and comments to code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

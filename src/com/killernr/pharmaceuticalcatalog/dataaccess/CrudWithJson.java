@@ -39,7 +39,7 @@
 //    Path pathToMedicine = Path.of("resources", "medicine.json");
 //    List<Medicine> medicineList = JsonAccess.medicineListFromJson();
 //    medicineList.set(userChoice, medicine);
-//    Gson gson = gsonnew Gson();
+//    Gson gson = new Gson();
 //    String jsonFromMedicine = gson.toJson(medicineList);
 //    try{
 //      JsonAccess.writeString(pathToMedicine, jsonFromMedicine);
