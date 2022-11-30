@@ -1,24 +1,24 @@
-package com.killernr.pharmaceuticalcatalog.dataaccess;
+package com.vmwork.pharmaceuticalcatalog.dataaccess;
 
 /**
  * Represents the user.
  * @author VasylMartynWork
  */
 public class User {
-  private String name;
+  private String login;
   private String password;
 
-  public User(String name, String password) {
-    this.name = name;
+  public User(String login, String password) {
+    this.login = login;
     this.password = password;
   }
 
   /**
-   * Return string that is the username.
-   * @return String that is username.
+   * Return string that is the user login.
+   * @return String that is user login.
    */
-  public String getName() {
-    return name;
+  public String getLogin() {
+    return login;
   }
 
   /**

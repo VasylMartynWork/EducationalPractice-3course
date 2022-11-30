@@ -1,4 +1,4 @@
-package com.killernr.pharmaceuticalcatalog.dataaccess;
+package com.vmwork.pharmaceuticalcatalog.dataaccess;
 
 import java.io.IOException;
 import java.util.List;

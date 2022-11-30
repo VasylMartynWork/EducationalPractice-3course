@@ -1,4 +1,4 @@
-package com.killernr.pharmaceuticalcatalog.dataaccess;
+package com.vmwork.pharmaceuticalcatalog.dataaccess;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.google.gson.Gson;
@@ -9,7 +9,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A utility class that provides user file handling capabilities that can read data from a file with
@@ -19,6 +18,8 @@ import java.util.stream.Collectors;
  */
 public class JsonAccess {
 
+  private static final Path PATH_TO_USERS = Path.of("resources", "users.json");
+
   /**
    * Add data about user to JSON.
    *
@@ -26,13 +27,12 @@ public class JsonAccess {
    * @throws IOException If file don't exist.
    */
   public static void addUser(User user) throws IOException {
-    Path path = Path.of("resources", "users.json");
     Gson gson = new Gson();
     List<User> userList = jsonToList();
     userList.add(user);
     String usersStr = gson.toJson(userList);
     try {
-      writeString(path, usersStr);
+      writeString(PATH_TO_USERS, usersStr);
     } catch (IOException e) {
       System.out.println("Error is: " + e.getMessage());
     }
@@ -40,12 +40,13 @@ public class JsonAccess {
 
   /**
    * Perform a searching needed medicine.
+   *
    * @param medicineName Name of medicine that needed.
    */
-  public static void searchMedicine(String medicineName){
+  public static void searchMedicine(String medicineName) {
     List<Medicine> medicineList = medicineListFromJson();
     for (Medicine medicine : medicineList) {
-      if(medicine.getName().equals(medicineName)){
+      if (medicine.getName().equals(medicineName)) {
         System.out.println("Назва: " + medicine.getName() + " Ціна: " + medicine.getCost());
         break;
       }
@@ -53,14 +54,16 @@ public class JsonAccess {
   }
 
   /**
-   * Perform a filtering medicine catalog and searching a medicine which cost is lower than specified by the user.
+   * Perform a filtering medicine catalog and searching a medicine which cost is lower than
+   * specified by the user.
+   *
    * @param medicineCost Medicine cost that is maximum cost for filtering.
    */
-  public static void filterMedicine(int medicineCost){
+  public static void filterMedicine(int medicineCost) {
     List<Medicine> medicineList = medicineListFromJson();
     medicineList = medicineList.stream().filter(x -> x.getCost() <= medicineCost).toList();
     for (Medicine medicine : medicineList) {
-      System.out.println("Назва: " + medicine.getName() + " Ціна: " + medicine.getCost());
+      System.out.printf("Назва: %s Ціна: %,.2f %n", medicine.getName(), medicine.getCost());
     }
   }
 
@@ -87,7 +90,7 @@ public class JsonAccess {
   }
 
   private static String testMedicineToJson() {
-    Medicine medicine = new Medicine("Анальгін", 125);
+    Medicine medicine = new Medicine("Анальгін", 125.0d);
     Gson gson = new Gson();
     List<Medicine> medicineList = new ArrayList<>();
     medicineList.add(medicine);
@@ -104,9 +107,9 @@ public class JsonAccess {
   public static int existingUserCheck(User user) {
     List<User> userList = jsonToList();
     for (User userFromList : userList) {
-      if (userFromList.getName().equals(user.getName()) && BCrypt.verifyer()
+      if (userFromList.getLogin().equals(user.getLogin()) && BCrypt.verifyer()
           .verify(user.getPassword().toCharArray(), userFromList.getPassword()).verified) {
-        if (userFromList.getName().equals("Admin")) {
+        if (userFromList.getLogin().equals("Admin")) {
           return 0;
         }
         return 1;
@@ -117,13 +120,14 @@ public class JsonAccess {
 
   /**
    * Return true if user exists in file with users and false, if he doesn't exist.
+   *
    * @param userName Name of the user that need to be checked.
    * @return True or false
    */
   public static boolean isExistUserRegistration(String userName) {
     List<User> userList = jsonToList();
     for (User user : userList) {
-      if(user.getName().equals(userName)){
+      if (user.getLogin().equals(userName)) {
         return true;
       }
     }
@@ -131,14 +135,13 @@ public class JsonAccess {
   }
 
   private static List<User> jsonToList() {
-    Path pathToUserJson = Path.of("resources", "users.json");
     Gson gson = new Gson();
     String jsonToArray = null;
     try {
-      if (readString(pathToUserJson).length() == 0) {
-        writeString(pathToUserJson, adminAccountToJson());
+      if (readString(PATH_TO_USERS).length() <= 2) {
+        writeString(PATH_TO_USERS, adminAccountToJson());
       }
-      jsonToArray = readString(pathToUserJson);
+      jsonToArray = readString(PATH_TO_USERS);
     } catch (IOException e) {
       System.out.println("Error is: " + e.getMessage());
     }
@@ -147,7 +150,7 @@ public class JsonAccess {
   }
 
   private static String adminAccountToJson() {
-    User admin = new User("Admin", "1234321");
+    User admin = new User("Admin", BCrypt.withDefaults().hashToString(12, "1234321".toCharArray()));
     Gson gson = new Gson();
     List<User> users = new ArrayList<>();
     users.add(admin);

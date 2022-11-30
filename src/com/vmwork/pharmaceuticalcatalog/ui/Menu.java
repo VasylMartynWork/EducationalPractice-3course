@@ -1,20 +1,22 @@
-package com.killernr.pharmaceuticalcatalog.ui;
+package com.vmwork.pharmaceuticalcatalog.ui;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import com.killernr.pharmaceuticalcatalog.businesslogic.Validation;
-import com.killernr.pharmaceuticalcatalog.dataaccess.JsonAccess;
-import com.killernr.pharmaceuticalcatalog.dataaccess.Medicine;
-import com.killernr.pharmaceuticalcatalog.dataaccess.MedicineDao;
-import com.killernr.pharmaceuticalcatalog.dataaccess.User;
+import com.vmwork.pharmaceuticalcatalog.businesslogic.Validation;
+import com.vmwork.pharmaceuticalcatalog.dataaccess.JsonAccess;
+import com.vmwork.pharmaceuticalcatalog.dataaccess.Medicine;
+import com.vmwork.pharmaceuticalcatalog.dataaccess.MedicineDao;
+import com.vmwork.pharmaceuticalcatalog.dataaccess.User;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 /**
  * Represents utility class that implements menu.
+ *
  * @author VasylMartynWork
  */
 public class Menu {
+
   static MedicineDao medicineDao = new MedicineDao();
 
   /**
@@ -33,11 +35,12 @@ public class Menu {
         if (JsonAccess.existingUserCheck(user) == 0) {
           adminMenu();
         } else if (JsonAccess.existingUserCheck(user) == 1) {
-          registeredUserMenu(user.getName());
+          registeredUserMenu(user.getLogin());
+        } else {
+          System.out.println("Такого користувача не існує");
         }
         break;
-      }
-      catch (Exception e){
+      } catch (Exception e) {
         System.out.println("Помилка, спробуйте ще раз");
       }
     }
@@ -47,7 +50,7 @@ public class Menu {
    * Displays the registration menu.
    */
   public static void registration() {
-    while(true) {
+    while (true) {
       System.out.println("Введіть логін: ");
       Scanner userLoginInput = new Scanner(System.in);
       try {
@@ -55,24 +58,22 @@ public class Menu {
         System.out.println("Введіть пароль: ");
         Scanner userPasswordInput = new Scanner(System.in);
         String userPassword = userPasswordInput.next();
-        if(!JsonAccess.isExistUserRegistration(userLogin)) {
+        if (!JsonAccess.isExistUserRegistration(userLogin)) {
           if (Validation.validate(userLogin, userPassword)) {
             String hashedUserPassword = BCrypt.withDefaults()
                 .hashToString(12, userPassword.toCharArray());
-            User newUser = new User(userLogin, hashedUserPassword);
-            JsonAccess.addUser(newUser);
-            registeredUserMenu(newUser.getName());
+            User user = new User(userLogin, hashedUserPassword);
+            JsonAccess.addUser(user);
+            registeredUserMenu(user.getLogin());
             System.exit(0);
           } else {
             System.out.println(
                 "Помилка, логін та пароль повинні бути не менше 5 символів, \nта складатись тільки з великих та маленьких латинських літер та цифр");
           }
-        }
-        else {
+        } else {
           System.out.println("Помилка, такий користувач вже існує");
         }
-      }
-      catch (Exception e){
+      } catch (Exception e) {
         System.out.println("Помилка, спробуйте ще раз");
       }
     }
@@ -80,22 +81,25 @@ public class Menu {
 
   /**
    * Displays a catalog of medicines.
+   *
    * @throws IOException If file don't exist.
    */
   public static void viewCatalog() throws IOException {
     List<Medicine> medicineList = medicineDao.getAll();
-    if(medicineList.isEmpty()) {
-      throw new IOException();
+    if (medicineList.isEmpty()) {
+      System.out.println("Помилка, каталог пустий");
+      return;
     }
     for (int i = 0; i < medicineList.size(); i++) {
-      System.out.println(i + ". Назва: " + medicineList.get(i).getName() + " Ціна: " + medicineList.get(i).getCost());
+      System.out.printf("%d. Назва: %s  Ціна: %,.2f %n", i, medicineList.get(i).getName(),
+          medicineList.get(i).getCost());
     }
   }
 
   /**
    * Displays searching menu.
    */
-  public static void searchMenu(){
+  public static void searchMenu() {
     while (true) {
       System.out.println("Введіть назву: ");
       Scanner medicineNameInput = new Scanner(System.in);
@@ -103,8 +107,7 @@ public class Menu {
         String medicineName = medicineNameInput.nextLine();
         JsonAccess.searchMedicine(medicineName);
         break;
-      }
-      catch (Exception e){
+      } catch (Exception e) {
         System.out.println("Помилка, спробуйте ще раз");
       }
     }
@@ -113,7 +116,7 @@ public class Menu {
   /**
    * Displays filtering menu.
    */
-  public static void filterMenu(){
+  public static void filterMenu() {
     while (true) {
       System.out.println("Введіть максимальну ціну: ");
       Scanner medicineCostInput = new Scanner(System.in);
@@ -121,8 +124,7 @@ public class Menu {
         int medicineCost = medicineCostInput.nextInt();
         JsonAccess.filterMedicine(medicineCost);
         break;
-      }
-      catch (Exception e){
+      } catch (Exception e) {
         System.out.println("Помилка, спробуйте ще раз");
       }
     }
@@ -134,7 +136,8 @@ public class Menu {
   public static void baseMenu() {
     System.out.println("Ласкаво просимо до фармацевтичного каталогу!");
     while (true) {
-      System.out.println("1. Авторизація \n2. Реєстрація \n3. Вивід каталогу \n4. Пошук в каталозі \n5. Фільтрувати \n6. Вихід");
+      System.out.println(
+          "1. Авторизація \n2. Реєстрація \n3. Вивід каталогу \n4. Пошук в каталозі \n5. Фільтрувати \n6. Вихід");
       System.out.println("Оберіть потрібний пункт меню: ");
       Scanner userInput = new Scanner(System.in);
       try {
@@ -150,8 +153,7 @@ public class Menu {
           case 3:
             try {
               viewCatalog();
-            }
-            catch (IOException e){
+            } catch (IOException e) {
               System.out.println("Помилка, файл пустий");
             }
             break;
@@ -184,6 +186,7 @@ public class Menu {
 
   /**
    * Displays menu for registered user.
+   *
    * @param userName Username of registered user.
    */
   private static void registeredUserMenu(String userName) {
@@ -194,7 +197,7 @@ public class Menu {
       Scanner userInput = new Scanner(System.in);
       try {
         int userChoice = userInput.nextInt();
-        switch (userChoice){
+        switch (userChoice) {
           case 1:
             viewCatalog();
             break;
@@ -249,8 +252,7 @@ public class Menu {
           case 4:
             try {
               viewCatalog();
-            }
-            catch (IOException e){
+            } catch (IOException e) {
               System.out.println("Помилка, файл пустий");
             }
             break;
@@ -288,12 +290,12 @@ public class Menu {
     while (true) {
       System.out.print("Введіть назву: ");
       try {
-        Scanner userInputName = new Scanner(System.in);
-        String name = userInputName.nextLine();
+        Scanner userNameInput = new Scanner(System.in);
+        String medicineName = userNameInput.nextLine();
         System.out.print("Введіть ціну: ");
-        Scanner userInputCost = new Scanner(System.in);
-        int cost = userInputCost.nextInt();
-        Medicine medicine = new Medicine(name, cost);
+        Scanner userCostInput = new Scanner(System.in);
+        double medicineCost = userCostInput.nextDouble();
+        Medicine medicine = new Medicine(medicineName, medicineCost);
         medicineDao.save(medicine);
         break;
       } catch (Exception e) {
@@ -309,8 +311,7 @@ public class Menu {
     while (true) {
       try {
         viewCatalog();
-      }
-      catch (IOException e){
+      } catch (IOException e) {
         System.out.println("Помилка, файл пустий");
         break;
       }
@@ -333,8 +334,7 @@ public class Menu {
     while (true) {
       try {
         viewCatalog();
-      }
-      catch (IOException e){
+      } catch (IOException e) {
         System.out.println("Помилка, файл пустий");
         break;
       }
@@ -343,12 +343,12 @@ public class Menu {
         Scanner userInput = new Scanner(System.in);
         int userChoice = userInput.nextInt();
         System.out.print("Введіть нову назву: ");
-        Scanner userInputName = new Scanner(System.in);
-        String medicineName = userInputName.nextLine();
+        Scanner userNameInput = new Scanner(System.in);
+        String medicineName = userNameInput.nextLine();
         System.out.print("Введіть нову ціну: ");
-        Scanner userInputCost = new Scanner(System.in);
-        int cost = userInputCost.nextInt();
-        Medicine medicine = new Medicine(medicineName, cost);
+        Scanner userCostInput = new Scanner(System.in);
+        double medicineCost = userCostInput.nextDouble();
+        Medicine medicine = new Medicine(medicineName, medicineCost);
         medicineDao.update(medicine, userChoice);
         break;
       } catch (Exception e) {

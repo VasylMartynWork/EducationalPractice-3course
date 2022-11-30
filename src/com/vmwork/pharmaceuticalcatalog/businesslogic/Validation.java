@@ -1,4 +1,4 @@
-package com.killernr.pharmaceuticalcatalog.businesslogic;
+package com.vmwork.pharmaceuticalcatalog.businesslogic;
 
 /**
  * This class have only one method, it is a validating of login and password which user wrote.
