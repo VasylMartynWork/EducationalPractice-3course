@@ -1,6 +1,1 @@
-[
-  {
-    "login": "Admin",
-    "password": "$2a$12$dXzF5sCaAz.8ceP8DyjDN.GumBwu0NRVGhGYKRYMA8d4gcgG6Hl1O"
-  }
-]
+[{"login":"Admin","password":"$2a$12$dXzF5sCaAz.8ceP8DyjDN.GumBwu0NRVGhGYKRYMA8d4gcgG6Hl1O"},{"login":"User1","password":"$2a$12$.FfZW5yWYMhgmH2tjHKqqey8D8Y3F2.5V92svy/ybImUh2ffGd4L6"}]

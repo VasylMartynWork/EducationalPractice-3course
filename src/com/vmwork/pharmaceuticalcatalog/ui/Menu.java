@@ -7,6 +7,7 @@ import com.vmwork.pharmaceuticalcatalog.dataaccess.Medicine;
 import com.vmwork.pharmaceuticalcatalog.dataaccess.MedicineDao;
 import com.vmwork.pharmaceuticalcatalog.dataaccess.User;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,12 +53,14 @@ public class Menu {
   public static void registration() {
     while (true) {
       System.out.println("Введіть логін: ");
-      Scanner userLoginInput = new Scanner(System.in);
       try {
+        Scanner userLoginInput = new Scanner(System.in, Charset.forName(
+            System.getProperty("os.name").toLowerCase().startsWith("win") ? "Windows-1251"
+                : "UTF-8"));
         String userLogin = userLoginInput.nextLine();
         System.out.println("Введіть пароль: ");
         Scanner userPasswordInput = new Scanner(System.in);
-        String userPassword = userPasswordInput.next();
+        String userPassword = userPasswordInput.nextLine();
         if (!JsonAccess.isExistUserRegistration(userLogin)) {
           if (Validation.validate(userLogin, userPassword)) {
             String hashedUserPassword = BCrypt.withDefaults()
@@ -102,7 +105,9 @@ public class Menu {
   public static void searchMenu() {
     while (true) {
       System.out.println("Введіть назву: ");
-      Scanner medicineNameInput = new Scanner(System.in);
+      Scanner medicineNameInput = new Scanner(System.in, Charset.forName(
+          System.getProperty("os.name").toLowerCase().startsWith("win") ? "Windows-1251"
+              : "UTF-8"));
       try {
         String medicineName = medicineNameInput.nextLine();
         JsonAccess.searchMedicine(medicineName);
@@ -290,7 +295,10 @@ public class Menu {
     while (true) {
       System.out.print("Введіть назву: ");
       try {
-        Scanner userNameInput = new Scanner(System.in);
+        Scanner userNameInput = new Scanner(System.in, Charset.forName(
+            System.getProperty("os.name").toLowerCase().startsWith("win") ? "Windows-1251"
+                : "UTF-8"));
+
         String medicineName = userNameInput.nextLine();
         System.out.print("Введіть ціну: ");
         Scanner userCostInput = new Scanner(System.in);
@@ -343,7 +351,9 @@ public class Menu {
         Scanner userInput = new Scanner(System.in);
         int userChoice = userInput.nextInt();
         System.out.print("Введіть нову назву: ");
-        Scanner userNameInput = new Scanner(System.in);
+        Scanner userNameInput = new Scanner(System.in, Charset.forName(
+            System.getProperty("os.name").toLowerCase().startsWith("win") ? "Windows-1251"
+                : "UTF-8"));
         String medicineName = userNameInput.nextLine();
         System.out.print("Введіть нову ціну: ");
         Scanner userCostInput = new Scanner(System.in);
