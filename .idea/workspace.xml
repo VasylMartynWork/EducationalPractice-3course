@@ -6,12 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Fixed some bugs, optimized code">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="c18192e8-eb5a-4f2d-991f-128a9042d324" name="Changes" comment="Final (maybe) commit, fixed bug with input text encoding error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vmwork/pharmaceuticalcatalog/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vmwork/pharmaceuticalcatalog/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vmwork/pharmaceuticalcatalog/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vmwork/pharmaceuticalcatalog/ui/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +134,8 @@
       <workItem from="1669954709884" duration="2700000" />
       <workItem from="1669969899498" duration="4075000" />
       <workItem from="1670002262617" duration="3771000" />
-      <workItem from="1670006464408" duration="899000" />
+      <workItem from="1670006464408" duration="2407000" />
+      <workItem from="1670146256151" duration="1325000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1669144425229</created>
@@ -195,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669835202899</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Final (maybe) commit, fixed bug with input text encoding error">
+      <created>1670007421315</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670007421315</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +226,8 @@
     <MESSAGE value="Fix registration bug, multiply registering with same login" />
     <MESSAGE value="Added search, filter, possibility to exit, checking for user existing at registration" />
     <MESSAGE value="Fixed some bugs, optimized code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs, optimized code" />
+    <MESSAGE value="Final (maybe) commit, fixed bug with input text encoding error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final (maybe) commit, fixed bug with input text encoding error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
